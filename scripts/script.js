@@ -27,6 +27,8 @@
 // if userLetter is inside the word, then return true and fill in those letters
 // if false, then minus 1 gold
 
+// when something is clicked, show a hint that shows by sliding down
+
 function Word(string, hint) {
 	this.string = string;
 	this.array = this.string.split("");
@@ -38,16 +40,22 @@ var kitten = new Word("kitten", "a domestic animal");
 
 function Whirl(word) {
 
+	var gameScreen = $("#gamescreen");
+
 	this.showBlanks = function() {
 		for (var i = 0; i < word.characters; i ++) {
-			var node = document.createElement("div");
-			var textnode = document.createTextNode(word.array[i]);
-			node.appendChild(textnode);
-			// console.log(node);
-			document.getElementById("gamescreen").appendChild(node);
-			// why doesn't this line work?
-
+			gameScreen.append("<div class='lettercard'>" + word.array[i] + "</div>");
+			$(".lettercard").css("background-color", "black");
+			$(".lettercard").css("display", "inline-block");
+			$(".lettercard").css("margin-left", "20px");
+			$(".lettercard").css("font-size", "40px");
+			// later change these in css. this is only temporary.
 		}
+
+	}
+
+	this.showHint = function() {
+		$("#show-hint").click().
 
 	}
 
@@ -57,4 +65,15 @@ function Whirl(word) {
 
 var wheel = new Whirl(kitten);
 wheel.showBlanks();
+
+
+
+
+// may be cool later to rewrite using vanilla js:
+			// var node = document.createElement("div");
+			// var textnode = document.createTextNode(word.array[i]);
+			// node.appendChild(textnode);
+			// // console.log(node);
+			// document.getElementById("gamescreen").appendChild(node);
+			// // why doesn't this line work?
 

@@ -36,7 +36,7 @@ function Word(string, hint) {
 	this.hint = hint;
 }
 
-var kitten = new Word("kitten", "a domestic animal");
+var kitten = new Word("kitten", "a young domestic animal");
 
 function Whirl(word) {
 
@@ -52,10 +52,20 @@ function Whirl(word) {
 			// later change these in css. this is only temporary.
 		}
 
+		$("#hint").html(word.hint);
+		$("#hint").hide();
+
 	}
 
 	this.showHint = function() {
-		$("#show-hint").click().
+		$("#hint").show();
+		// $("#show-hint").html("Hide Hint");
+
+	}
+
+	this.hideHint = function() {
+		$("#hint").hide();
+		// $("#show-hint").html("Hide Hint");
 
 	}
 
@@ -67,7 +77,15 @@ var wheel = new Whirl(kitten);
 wheel.showBlanks();
 
 
+// Event listeners: 
 
+$("#show-hint").click(function(){
+	wheel.showHint();
+})
+
+$("#hide-hint").click(function(){
+	wheel.hideHint();
+})
 
 // may be cool later to rewrite using vanilla js:
 			// var node = document.createElement("div");

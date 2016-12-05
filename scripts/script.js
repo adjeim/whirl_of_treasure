@@ -17,7 +17,7 @@
 
 // bonus: if you guess the word correctly, win a chance to spin for bonus gold. exchange your gold for sweet prizes
 
-// toggle showhint
+// toggle showHint
 
 
 // display on the document the number of inline divs where the letters will appear
@@ -29,9 +29,32 @@
 
 function Word(string, hint) {
 	this.string = string;
+	this.array = this.string.split("");
 	this.characters = this.string.length;
 	this.hint = hint;
 }
 
 var kitten = new Word("kitten", "a domestic animal");
+
+function Whirl(word) {
+
+	this.showBlanks = function() {
+		for (var i = 0; i < word.characters; i ++) {
+			var node = document.createElement("div");
+			var textnode = document.createTextNode(word.array[i]);
+			node.appendChild(textnode);
+			// console.log(node);
+			document.getElementById("gamescreen").appendChild(node);
+			// why doesn't this line work?
+
+		}
+
+	}
+
+
+
+}
+
+var wheel = new Whirl(kitten);
+wheel.showBlanks();
 

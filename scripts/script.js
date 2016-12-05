@@ -69,6 +69,10 @@ function Whirl(word) {
 
 	}
 
+	this.guessLetter = function() {
+		
+	}
+
 
 
 }
@@ -85,6 +89,10 @@ $("#show-hint").click(function(){
 
 $("#hide-hint").click(function(){
 	wheel.hideHint();
+})
+
+$("#submit-guess").click(function(){
+	wheel.guessLetter();
 })
 
 // may be cool later to rewrite using vanilla js:

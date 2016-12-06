@@ -8,12 +8,13 @@
 // Hints are given to direct the user what the word is related to
 // HTML/CSS is properly formatted
 
-// make a Word object
 // make a new Word and store it in a Word list (maybe later)
 
 // make easy word, medium word, hard word
 
 // user goal is to guess the word correctly. for each guess wrong, you lose gold. for each guess right, you win gold. 
+
+// spin the wheel to get a multiplier, do you want to take the risk for more fabulous prizes? or you could go into fabulous debt. 
 
 // bonus: if you guess the word correctly, win a chance to spin for bonus gold. exchange your gold for sweet prizes
 
@@ -21,9 +22,6 @@
 
 // going to want to make a word list that the whirl loops through, changing the index to the next word when the user gets it correct
 
-
-// display on the document the number of inline divs where the letters will appear
-// 
 
 // user guess a letter
 // if userLetter is inside the word, then return true and fill in those letters
@@ -111,6 +109,10 @@ function Whirl(word) {
 		// once the user's guess is over, change the input value to blank again so the user can make a new guess
 	}
 
+	this.multiplier = 1;
+	// set the intial multiplier to 1
+
+	// this.
 
 
 }

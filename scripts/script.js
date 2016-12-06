@@ -91,9 +91,14 @@ function Whirl(word) {
 
 		console.log(indexes);
 
+		var correctAnswer;
+
 		if (indexes[0] === undefined) {
 			// if there is nothing in the indexes array because the user's guess was not found
 			console.log("your answer is incorrect");
+			this.correctAnswer = false;
+			this.changeGold();
+
 
 		} else {
 			// otherwise, loop through the array of indexes, and change the background color of the indexes matching the user's guess
@@ -103,6 +108,8 @@ function Whirl(word) {
 				// console.log(changeMe);
 				$(changeMe).css("background-color", "white");
 			}
+			this.correctAnswer = true;
+			this.changeGold();
 		}
 
 		document.getElementById("submit-input").value = "";
@@ -113,18 +120,22 @@ function Whirl(word) {
 	// set the intial multiplier to 1
 
 	this.goldCounter = 0;
-	// this.goldCounter 
 	$("#gold").html("My gold: " + this.goldCounter);
 
 	this.changeGold = function() {
-		
-
-
-
-		// if the user's guess was correct, increment the gold by 1
-		// if the user's guess was incorrect, decrement the gold by 1
+		if (this.correctAnswer === true) {
+			this.goldCounter += 1;
+			$("#gold").html("My gold: " + this.goldCounter);
+			// if the user's guess was correct, increment the gold by 1
+		}
+		else {
+			this.goldCounter -= 1;
+			$("#gold").html("My gold: " + this.goldCounter);
+			// if the user's guess was incorrect, decrement the gold by 1
+		}
 	}
 
+	
 
 }
 

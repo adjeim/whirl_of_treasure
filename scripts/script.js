@@ -108,9 +108,17 @@ function Whirl(word) {
 			console.log("your answer is incorrect");
 		} else {
 			console.log("your answer is correct");
-			$(".lettercard")[(indexes[0])].css("background-color", "white");
-
+			for (var i = 0; i < indexes.length; i ++) {
+				var changeMe = $(".lettercard")[(indexes[i])];
+				// console.log(changeMe);
+				$(changeMe).css("background-color", "white");
+				// console.log($(".lettercard")[(indexes[0])]);
+				// $(".lettercard")[(indexes[0])].css("background-color", "white");
+			}
 		}
+
+		document.getElementById("submit-input").value = "";
+		// if 
 
 
 

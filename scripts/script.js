@@ -16,24 +16,26 @@
 
 // spin the wheel to get a multiplier, do you want to take the risk for more fabulous prizes? or you could go into fabulous debt. 
 
+//
+
 // bonus: if you guess the word correctly, win a chance to spin for bonus gold. exchange your gold for sweet prizes
 
 // toggle showHint
 
 // going to want to make a word list that the whirl loops through, changing the index to the next word when the user gets it correct
 
-
-// user guess a letter
-// if userLetter is inside the word, then return true and fill in those letters
-// if false, then minus 1 gold
+// if user can guess the whole word beforehand, give them
 
 // when something is clicked, show a hint that shows by sliding down
 
-function Word(string, hint) {
+// notice when the word has been solved
+
+function Word(string, hint, maxGold) {
 	this.string = string;
 	this.array = this.string.split("");
 	this.characters = this.string.length;
 	this.hint = hint;
+	this.maxGold = this.string.length;
 }
 
 var kitten = new Word("kitten", "a young domestic animal");
@@ -107,6 +109,7 @@ function Whirl(word) {
 				var changeMe = $(".lettercard")[(indexes[i])];
 				// console.log(changeMe);
 				$(changeMe).css("background-color", "white");
+				$(changeMe).addClass("guessed");
 			}
 			this.correctAnswer = true;
 			this.changeGold();
@@ -121,6 +124,7 @@ function Whirl(word) {
 
 	this.goldCounter = 0;
 	$("#gold").html("My gold: " + this.goldCounter);
+	$("#max-gold").html("Max gold: " + word.maxGold);
 
 	this.changeGold = function() {
 		if (this.correctAnswer === true) {
@@ -135,7 +139,29 @@ function Whirl(word) {
 		}
 	}
 
-	
+	// this.gameOver = function() {
+	// 	// if all of the cards are turned over (have a class of guessed), show a message of congrats
+	// 	// var gameEnd = false;
+
+	// 	for (var i = 0; i < word.array.length; i ++) {
+	// 		if ($(word.array[i]).hasClass("guessed")) {
+	// 			console.log(i);
+	// 		}
+	// 		// var isGuessed = word.array[i];
+	// 		// if ($(isGuessed).hasClass("guessed")) {
+	// 			// console.log(isGuessed);
+
+	// 			// return true;
+	// 		// }
+
+	// 	}
+	// 	// return false;
+
+	// 	// show a final gold count
+
+
+	// }
+
 
 }
 

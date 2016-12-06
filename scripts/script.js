@@ -112,7 +112,18 @@ function Whirl(word) {
 	this.multiplier = 1;
 	// set the intial multiplier to 1
 
-	// this.
+	this.goldCounter = 0;
+	// this.goldCounter 
+	$("#gold").html("My gold: " + this.goldCounter);
+
+	this.changeGold = function() {
+		
+
+
+
+		// if the user's guess was correct, increment the gold by 1
+		// if the user's guess was incorrect, decrement the gold by 1
+	}
 
 
 }

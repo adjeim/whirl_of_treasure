@@ -40,7 +40,7 @@ function Word(string, hint) {
 
 var kitten = new Word("kitten", "a young domestic animal");
 var generosity = new Word("generosity", "a quality found in those who share what they have");
-
+var incomprehensibilities = new Word("incomprehensibilities", "things that are difficult or impossible to understand");
 
 
 function Whirl(word) {
@@ -81,68 +81,34 @@ function Whirl(word) {
 		// console.log(userGuess);
 
 		var indexes = [];
+		// create a blank array to store the indexes where user guess can be found
 
 		for (var i = 0; i < word.array.length; i ++) {
 			if (word.array[i].indexOf(userGuess) === 0) {
 				indexes.push(i);
-				// console.log(indexes);
-				// console.log("your answer is correct");
-				// return indexes;
-			} //else {
-				//console.log("your answer is incorrect");
-				// return
-			//}
-			// console.log(indexes);
 
+			} 
 		}
+		// loop through the word array, and for index that the user's guess is found, push that index to the indexes array
+
 		console.log(indexes);
 
-		// loop through the word array. 
-		// if the letter the user guessed is present, log the index where that letter can be found
-		// if the letter is not present, logs an empty array
-
-		// if the array is empty, console.log("your answer is incorrect")
-		// if the array has indexes in it, change those indexes to bg color white
-
 		if (indexes[0] === undefined) {
+			// if there is nothing in the indexes array because the user's guess was not found
 			console.log("your answer is incorrect");
+
 		} else {
+			// otherwise, loop through the array of indexes, and change the background color of the indexes matching the user's guess
 			console.log("your answer is correct");
 			for (var i = 0; i < indexes.length; i ++) {
 				var changeMe = $(".lettercard")[(indexes[i])];
 				// console.log(changeMe);
 				$(changeMe).css("background-color", "white");
-				// console.log($(".lettercard")[(indexes[0])]);
-				// $(".lettercard")[(indexes[0])].css("background-color", "white");
 			}
 		}
 
 		document.getElementById("submit-input").value = "";
-		// if 
-
-
-
-
-		// if (word.array.indexOf(userGuess) > -1) {
-		// 	// console.log("your guess is correct");
-		// 	// console.log(word.array.indexOf(userGuess));
-		// 	// only shows the first instance
-		// 	// if the letter the user guessed is somewhere in the word
-		// 	var indexes = [];
-		// 	for (var i = 0; i < word.array.length; i ++) {
-
-		// 		indexes.push(word.array[i].indexOf(userGuess));
-		// 		// try to push to an array all of the indexes that contain the user's guessed letter
-
-		// 		// 
-		// 	}
-		// 	console.log(indexes);
-		// } else {
-		// 	// console.log("your guess is incorrect");
-		// }
-
-		// if userGuess is found somewhere inside the array of the word, turn those indexes where that guess is correct to background color white
-		// turn all the guesses to lowercase, but lower or upper is okay for the guess
+		// once the user's guess is over, change the input value to blank again so the user can make a new guess
 	}
 
 

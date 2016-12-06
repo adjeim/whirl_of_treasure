@@ -19,6 +19,8 @@
 
 // toggle showHint
 
+// going to want to make a word list that the whirl loops through, changing the index to the next word when the user gets it correct
+
 
 // display on the document the number of inline divs where the letters will appear
 // 
@@ -37,6 +39,9 @@ function Word(string, hint) {
 }
 
 var kitten = new Word("kitten", "a young domestic animal");
+var generosity = new Word("generosity", "a quality found in those who share what they have");
+
+
 
 function Whirl(word) {
 
@@ -56,6 +61,8 @@ function Whirl(word) {
 		$("#hint").hide();
 
 	}
+	this.showBlanks();
+	// call the function immediately when the whirl is created
 
 	this.showHint = function() {
 		$("#hint").show();
@@ -70,7 +77,64 @@ function Whirl(word) {
 	}
 
 	this.guessLetter = function() {
-		
+		var userGuess = $("input").val();
+		// console.log(userGuess);
+
+		var indexes = [];
+
+		for (var i = 0; i < word.array.length; i ++) {
+			if (word.array[i].indexOf(userGuess) === 0) {
+				indexes.push(i);
+				// console.log(indexes);
+				// console.log("your answer is correct");
+				// return indexes;
+			} //else {
+				//console.log("your answer is incorrect");
+				// return
+			//}
+			// console.log(indexes);
+
+		}
+		console.log(indexes);
+
+		// loop through the word array. 
+		// if the letter the user guessed is present, log the index where that letter can be found
+		// if the letter is not present, logs an empty array
+
+		// if the array is empty, console.log("your answer is incorrect")
+		// if the array has indexes in it, change those indexes to bg color white
+
+		if (indexes[0] === undefined) {
+			console.log("your answer is incorrect");
+		} else {
+			console.log("your answer is correct");
+			$(".lettercard")[(indexes[0])].css("background-color", "white");
+
+		}
+
+
+
+
+		// if (word.array.indexOf(userGuess) > -1) {
+		// 	// console.log("your guess is correct");
+		// 	// console.log(word.array.indexOf(userGuess));
+		// 	// only shows the first instance
+		// 	// if the letter the user guessed is somewhere in the word
+		// 	var indexes = [];
+		// 	for (var i = 0; i < word.array.length; i ++) {
+
+		// 		indexes.push(word.array[i].indexOf(userGuess));
+		// 		// try to push to an array all of the indexes that contain the user's guessed letter
+
+		// 		// 
+		// 	}
+		// 	console.log(indexes);
+		// } else {
+		// 	// console.log("your guess is incorrect");
+		// }
+
+		// if userGuess is found somewhere inside the array of the word, turn those indexes where that guess is correct to background color white
+		// turn all the guesses to lowercase, but lower or upper is okay for the guess
 	}
 
 
@@ -78,7 +142,7 @@ function Whirl(word) {
 }
 
 var wheel = new Whirl(kitten);
-wheel.showBlanks();
+// wheel.showBlanks();
 
 
 // Event listeners: 

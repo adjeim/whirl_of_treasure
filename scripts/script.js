@@ -24,20 +24,22 @@
 
 // notice when the word has been solved
 
-function Word(string, hint, maxGold) {
+function Word(string, hint, whitespace) {
 	this.string = string;
 	this.array = this.string.split("");
 	this.characters = this.string.length;
 	this.hint = hint;
-	this.maxGold = this.array.filter((value, index, arr) => arr.indexOf(value) === index).length;
+	this.whitespace = whitespace;
+	this.maxGold = this.array.filter((value, index, arr) => arr.indexOf(value) === index).length - this.whitespace;
+	this.minGold = -this.maxGold;
 	// Filter through the array and return the number of unique characters in the word.
 
 }
 
-var kitten = new Word("kitten", "a young domestic animal");
-var generosity = new Word("generosity", "a quality found in those who share what they have");
-var incomprehensibilities = new Word("incomprehensibilities", "things that are difficult or impossible to understand");
-var winterSolstice = new Word("winter solstice", "December 21");
+var kitten = new Word("kitten", "a young domestic animal", 0);
+var generosity = new Word("generosity", "a quality found in those who share what they have", 0);
+var incomprehensibilities = new Word("incomprehensibilities", "things that are difficult or impossible to understand", 0);
+var winterSolstice = new Word("winter solstice", "December 21", 1);
 
 
 var firstWordList = [kitten, generosity, incomprehensibilities, winterSolstice];
@@ -51,20 +53,43 @@ function Whirl(wordlist) {
 
 	this.showBlanks = function() {
 		this.currentWord = wordlist[this.currentWordIndex];
+		// this.whitespace = 
+
 		for (var i = 0; i < this.currentWord.characters; i ++) {
 			console.log(this.currentWord.array[i]);
-			gameScreen.append("<div class='lettercard'>" + this.currentWord.array[i] + "</div>");
-			$(".lettercard").css("background-color", "black");
-			$(".lettercard").css("display", "inline-block");
-			$(".lettercard").css("margin-left", "20px");
-			$(".lettercard").css("font-size", "40px");
+			// this.whitespace = 0;
+
+			if (this.currentWord.array[i] !== [/\s/]) {
+				gameScreen.append("<div class='lettercard'>" + this.currentWord.array[i] + "</div>");
+				$(".lettercard").css("background-color", "black");
+				$(".lettercard").css("display", "inline-block");
+				$(".lettercard").css("margin-left", "20px");
+				$(".lettercard").css("font-size", "40px");
+			} else {
+				// this.whitespace += 1;
+				// console.log(this.whitespace);
+				gameScreen.append("<div class='whitespace'>&nbsp;</div>");
+				// $(".lettercard").css("background-color", "black");
+				$(".lettercard").css("display", "inline-block");
+				$(".lettercard").css("margin-left", "20px");
+				$(".lettercard").css("margin-left", "20px");
+				$(".lettercard").css("font-size", "40px");
+
+			}
 			// later change these in css. this is only temporary.
+
+			$("#max-gold").html("Max gold: " + this.currentWord.maxGold);
+			$("#min-gold").html("Min gold: " + this.currentWord.minGold);
 		}
+
+		// if i is not a whitespace character, place a card
+		// if it is a whitepsace character, place a div that contains a nbsp or just space inside
+		// decrement the max gold by the number of whitespace chars
 
 		$("#hint").html(this.currentWord.hint);
 		$("#hint").hide();
 
-		$("#max-gold").html("Max gold: " + this.currentWord.maxGold);
+
 
 	}
 	this.showBlanks();
@@ -82,14 +107,37 @@ function Whirl(wordlist) {
 
 	}
 
+	var guessedList = "";
+
 	this.guessLetter = function() {
 		var userGuess = $("input").val();
 		// console.log(userGuess);
 
+		var alreadyGuessed;
+		// var guessed = "";
+		// $("#already-guessed").append(userGuess)
+
+		if (guessedList.indexOf(userGuess) === -1) {
+			// If the new guess is not already written to already-guessed list, add it.
+			guessedList += userGuess;
+			$("#already-guessed").html(guessedList);
+		} else {
+			// $("#already-guessed").append(userGuess);
+			alreadyGuessed = true;
+			// console.log("You've guessed that already.");
+		}
+
+		// console.log(guessed);
+		// guessed + userGuess;
+		// console.log(guessed);
 		var indexes = [];
 		// Create a blank array to store the indexes where the user's guess can be found.
 
 		for (var i = 0; i < this.currentWord.array.length; i ++) {
+			// if (userGuess == [/\s/]) {
+			// 	console.log("Please enter a letter from a to z.");
+			// }
+			// else 
 			if (this.currentWord.array[i].indexOf(userGuess) === 0) {
 				indexes.push(i);
 
@@ -102,12 +150,18 @@ function Whirl(wordlist) {
 		var correctAnswer;
 		// Create a new variable for the correct answer.
 
-		if (indexes[0] === undefined) {
+		if (userGuess === " ") {
+			console.log("Please enter a letter from a to z.");
+
+		} else if (alreadyGuessed === true) {
+			// If the user has already guessed this letter:
+			console.log("You've already guessed that letter.");
+
+		} else if (indexes[0] === undefined) {
 			// If there is nothing in the indexes array because the user's guess was not found:
 			console.log("your answer is incorrect");
 			this.correctAnswer = false;
 			this.changeGold();
-
 
 		} else {
 			// Otherwise, loop through the array of indexes and change the background color of the indexes matching the user's guess.

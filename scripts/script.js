@@ -12,11 +12,7 @@
 
 // make easy word, medium word, hard word
 
-// user goal is to guess the word correctly. for each guess wrong, you lose gold. for each guess right, you win gold. 
-
 // spin the wheel to get a multiplier, do you want to take the risk for more fabulous prizes? or you could go into fabulous debt. 
-
-//
 
 // bonus: if you guess the word correctly, win a chance to spin for bonus gold. exchange your gold for sweet prizes
 
@@ -41,6 +37,8 @@ function Word(string, hint, maxGold) {
 var kitten = new Word("kitten", "a young domestic animal");
 var generosity = new Word("generosity", "a quality found in those who share what they have");
 var incomprehensibilities = new Word("incomprehensibilities", "things that are difficult or impossible to understand");
+
+var wordList = [kitten, generosity, incomprehensibilities];
 
 
 function Whirl(word) {
@@ -165,7 +163,11 @@ function Whirl(word) {
 
 }
 
-var wheel = new Whirl(kitten);
+function nextWhirl(wordList) {
+
+}
+
+var wheel = new Whirl(wordList[0]);
 // wheel.showBlanks();
 
 
@@ -182,6 +184,11 @@ $("#hide-hint").click(function(){
 $("#submit-guess").click(function(){
 	wheel.guessLetter();
 })
+
+$("#new-whirl").click(function(){
+	nextWhirl();
+})
+
 
 // may be cool later to rewrite using vanilla js:
 			// var node = document.createElement("div");

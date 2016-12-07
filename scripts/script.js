@@ -59,7 +59,7 @@ function Whirl(wordlist) {
 			console.log(this.currentWord.array[i]);
 			// this.whitespace = 0;
 
-			if (this.currentWord.array[i] !== [/\s/]) {
+			if (this.currentWord.array[i] !== " ") {
 				gameScreen.append("<div class='lettercard'>" + this.currentWord.array[i] + "</div>");
 				$(".lettercard").css("background-color", "black");
 				$(".lettercard").css("display", "inline-block");
@@ -68,8 +68,9 @@ function Whirl(wordlist) {
 			} else {
 				// this.whitespace += 1;
 				// console.log(this.whitespace);
-				gameScreen.append("<div class='whitespace'>&nbsp;</div>");
-				// $(".lettercard").css("background-color", "black");
+				gameScreen.append("<div class='lettercard whitespace'>&nbsp;</div>");
+				$(".whitespace").css("background-color", "white");
+				// in the css, bg color
 				$(".lettercard").css("display", "inline-block");
 				$(".lettercard").css("margin-left", "20px");
 				$(".lettercard").css("margin-left", "20px");
@@ -178,6 +179,9 @@ function Whirl(wordlist) {
 
 		document.getElementById("submit-input").value = "";
 		// Once the user's guess is over, reset the input value to blank so the user can make a new guess.
+
+		this.endWhirl();
+		// Check to see if the user has finished the game.
 	}
 
 	this.multiplier = 1;
@@ -209,28 +213,35 @@ function Whirl(wordlist) {
 		// Set the screen ready to play the new word.
 	}
 
-	// this.gameOver = function() {
-	// 	// if all of the cards are turned over (have a class of guessed), show a message of congrats
-	// 	// var gameEnd = false;
-
-	// 	for (var i = 0; i < this.currentWord.array.length; i ++) {
-	// 		if ($(this.currentWord.array[i]).hasClass("guessed")) {
-	// 			console.log(i);
-	// 		}
-	// 		// var isGuessed = this.currentWord.array[i];
-	// 		// if ($(isGuessed).hasClass("guessed")) {
-	// 			// console.log(isGuessed);
-
-	// 			// return true;
-	// 		// }
-
-	// 	}
-	// 	// return false;
-
-	// 	// show a final gold count
 
 
-	// }
+	this.endWhirl = function() {
+		// If all of the letter cards have a class of guessed or a class of whitespace, the game is over. Show a message of congrats and a message of the winnings. 
+
+		var gameOver = false;
+
+		this.checkPuzzle = function() {
+			for (var i = 0; i < this.currentWord.array.length; i ++) {
+				if ($(".lettercard").eq(i).hasClass("guessed") === false && $(".lettercard").eq(i).hasClass("whitespace") === false) {
+					console.log($(".lettercard").eq(i).hasClass("guessed"));
+					console.log($(".lettercard").eq(i).hasClass("whitespace"));
+					return false;
+				}
+			
+			}
+			return true;
+		}
+		// end function checkPuzzle
+
+		if (this.checkPuzzle()) {
+			// console.log("You win!");
+			var resultMessage = $("#result");
+			resultMessage.html("You win and walk away with " + this.goldCounter + " gold!");
+		} else {
+			console.log("Keep it up!");
+		}
+
+	}
 
 
 }

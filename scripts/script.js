@@ -8,8 +8,6 @@
 // Hints are given to direct the user what the word is related to
 // HTML/CSS is properly formatted
 
-// make a new Word and store it in a Word list (maybe later)
-
 // make easy word, medium word, hard word
 
 // spin the wheel to get a multiplier, do you want to take the risk for more fabulous prizes? or you could go into fabulous debt. 
@@ -21,8 +19,6 @@
 // if user can guess the whole word beforehand, give them...?
 
 // when something is clicked, show a hint that shows by sliding down
-
-// notice when the word has been solved
 
 function Word(string, hint, whitespace) {
 	this.string = string;
@@ -52,12 +48,13 @@ function Whirl(wordlist) {
 	this.currentWordIndex = 0;
 
 	this.showBlanks = function() {
+		this.goldCounter = 0;
+		$("#gold").html("My gold: " + this.goldCounter);
+
 		this.currentWord = wordlist[this.currentWordIndex];
-		// this.whitespace = 
 
 		for (var i = 0; i < this.currentWord.characters; i ++) {
 			console.log(this.currentWord.array[i]);
-			// this.whitespace = 0;
 
 			if (this.currentWord.array[i] !== " ") {
 				gameScreen.append("<div class='lettercard'>" + this.currentWord.array[i] + "</div>");
@@ -70,7 +67,7 @@ function Whirl(wordlist) {
 				// console.log(this.whitespace);
 				gameScreen.append("<div class='lettercard whitespace'>&nbsp;</div>");
 				$(".whitespace").css("background-color", "white");
-				// in the css, bg color
+				// in the css, bg color needs to change for this
 				$(".lettercard").css("display", "inline-block");
 				$(".lettercard").css("margin-left", "20px");
 				$(".lettercard").css("margin-left", "20px");
@@ -83,13 +80,8 @@ function Whirl(wordlist) {
 			$("#min-gold").html("Min gold: " + this.currentWord.minGold);
 		}
 
-		// if i is not a whitespace character, place a card
-		// if it is a whitepsace character, place a div that contains a nbsp or just space inside
-		// decrement the max gold by the number of whitespace chars
-
 		$("#hint").html(this.currentWord.hint);
 		$("#hint").hide();
-
 
 
 	}
@@ -128,20 +120,13 @@ function Whirl(wordlist) {
 			// console.log("You've guessed that already.");
 		}
 
-		// console.log(guessed);
-		// guessed + userGuess;
-		// console.log(guessed);
+
 		var indexes = [];
 		// Create a blank array to store the indexes where the user's guess can be found.
 
 		for (var i = 0; i < this.currentWord.array.length; i ++) {
-			// if (userGuess == [/\s/]) {
-			// 	console.log("Please enter a letter from a to z.");
-			// }
-			// else 
 			if (this.currentWord.array[i].indexOf(userGuess) === 0) {
 				indexes.push(i);
-
 			} 
 		}
 		// Loop through the word array, and for index where the user's guess is found, push that index to the indexes array.
@@ -187,8 +172,7 @@ function Whirl(wordlist) {
 	this.multiplier = 1;
 	// Set the intial multiplier to 1
 
-	this.goldCounter = 0;
-	$("#gold").html("My gold: " + this.goldCounter);
+
 
 	this.changeGold = function() {
 		if (this.correctAnswer === true) {
@@ -237,6 +221,7 @@ function Whirl(wordlist) {
 			// console.log("You win!");
 			var resultMessage = $("#result");
 			resultMessage.html("You win and walk away with " + this.goldCounter + " gold!");
+		
 		} else {
 			console.log("Keep it up!");
 		}

@@ -31,9 +31,9 @@ function Word(string, hint, maxGold) {
 	this.array = this.string.split("");
 	this.characters = this.string.length;
 	this.hint = hint;
-	// this.maxGold = this.string.length;
-	this.maxGold = 
-	// maxGold needs to be the length of the array of the unique characters
+	this.maxGold = this.array.filter((value, index, arr) => arr.indexOf(value) === index).length;
+	// This line filters through the array and returns the number of unique characters in the word.
+
 }
 
 var kitten = new Word("kitten", "a young domestic animal");

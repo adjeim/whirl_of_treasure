@@ -18,9 +18,7 @@
 
 // toggle showHint
 
-// going to want to make a word list that the whirl loops through, changing the index to the next word when the user gets it correct
-
-// if user can guess the whole word beforehand, give them
+// if user can guess the whole word beforehand, give them...?
 
 // when something is clicked, show a hint that shows by sliding down
 
@@ -32,15 +30,17 @@ function Word(string, hint, maxGold) {
 	this.characters = this.string.length;
 	this.hint = hint;
 	this.maxGold = this.array.filter((value, index, arr) => arr.indexOf(value) === index).length;
-	// This line filters through the array and returns the number of unique characters in the word.
+	// Filter through the array and return the number of unique characters in the word.
 
 }
 
 var kitten = new Word("kitten", "a young domestic animal");
 var generosity = new Word("generosity", "a quality found in those who share what they have");
 var incomprehensibilities = new Word("incomprehensibilities", "things that are difficult or impossible to understand");
+var winterSolstice = new Word("winter solstice", "December 21");
 
-var firstWordList = [kitten, generosity, incomprehensibilities];
+
+var firstWordList = [kitten, generosity, incomprehensibilities, winterSolstice];
 
 
 function Whirl(wordlist) {
@@ -48,8 +48,6 @@ function Whirl(wordlist) {
 	var gameScreen = $("#gamescreen");
 
 	this.currentWordIndex = 0;
-
-	// this.currentWord = wordlist[this.currentWordIndex];
 
 	this.showBlanks = function() {
 		this.currentWord = wordlist[this.currentWordIndex];
@@ -70,7 +68,7 @@ function Whirl(wordlist) {
 
 	}
 	this.showBlanks();
-	// call the function immediately when the whirl is created
+	// Call the function immediately when the whirl is created.
 
 	this.showHint = function() {
 		$("#hint").show();
@@ -89,7 +87,7 @@ function Whirl(wordlist) {
 		// console.log(userGuess);
 
 		var indexes = [];
-		// create a blank array to store the indexes where user guess can be found
+		// Create a blank array to store the indexes where the user's guess can be found.
 
 		for (var i = 0; i < this.currentWord.array.length; i ++) {
 			if (this.currentWord.array[i].indexOf(userGuess) === 0) {
@@ -97,21 +95,22 @@ function Whirl(wordlist) {
 
 			} 
 		}
-		// loop through the word array, and for index that the user's guess is found, push that index to the indexes array
+		// Loop through the word array, and for index where the user's guess is found, push that index to the indexes array.
 
 		console.log(indexes);
 
 		var correctAnswer;
+		// Create a new variable for the correct answer.
 
 		if (indexes[0] === undefined) {
-			// if there is nothing in the indexes array because the user's guess was not found
+			// If there is nothing in the indexes array because the user's guess was not found:
 			console.log("your answer is incorrect");
 			this.correctAnswer = false;
 			this.changeGold();
 
 
 		} else {
-			// otherwise, loop through the array of indexes, and change the background color of the indexes matching the user's guess
+			// Otherwise, loop through the array of indexes and change the background color of the indexes matching the user's guess.
 			console.log("your answer is correct");
 			for (var i = 0; i < indexes.length; i ++) {
 				var changeMe = $(".lettercard")[(indexes[i])];
@@ -124,52 +123,37 @@ function Whirl(wordlist) {
 		}
 
 		document.getElementById("submit-input").value = "";
-		// once the user's guess is over, change the input value to blank again so the user can make a new guess
+		// Once the user's guess is over, reset the input value to blank so the user can make a new guess.
 	}
 
 	this.multiplier = 1;
-	// set the intial multiplier to 1
+	// Set the intial multiplier to 1
 
 	this.goldCounter = 0;
 	$("#gold").html("My gold: " + this.goldCounter);
-	// $("#max-gold").html("Max gold: " + this.currentWord.maxGold);
 
 	this.changeGold = function() {
 		if (this.correctAnswer === true) {
 			this.goldCounter += 1;
 			$("#gold").html("My gold: " + this.goldCounter);
-			// if the user's guess was correct, increment the gold by 1
+			// If the user's guess is correct, increment the gold by 1.
 		}
 		else {
 			this.goldCounter -= 1;
 			$("#gold").html("My gold: " + this.goldCounter);
-			// if the user's guess was incorrect, decrement the gold by 1
+			// If the user's guess is incorrect, decrement the gold by 1.
 		}
 	}
 
 	this.incrementIndex = function() {
-		// clear the board
-		// $()
-		// for (var i = 0; i < this.currentWord.characters; i ++) {
-			gameScreen.children("div").remove();
+		gameScreen.children("div").remove();
+		// Clear the game screen of the last word.
 
-			// later change these in css. this is only temporary.
-		// }
 		this.currentWordIndex += 1;
-		console.log(this.currentWordIndex);
+		// console.log(this.currentWordIndex);
 		this.showBlanks();
+		// Set the screen ready to play the new word.
 	}
-
-	// this.incrementIndex();
-	// console.log(this.currentWordIndex);
-
-	// this.incrementWhirl = function() {
-	// 	this.showBlanks();
-
-	// 	// var nextWheel = new Whirl(wordList[this.currentWordIndex]);
-	// 	// console.log(nextWheel);
-	// 	// return nextWheel;
-	// }
 
 	// this.gameOver = function() {
 	// 	// if all of the cards are turned over (have a class of guessed), show a message of congrats
@@ -196,30 +180,6 @@ function Whirl(wordlist) {
 
 
 }
-
-function nextWhirl(wordList) {
-	// this.this.currentWordIndex = 0;
-
-	this.incrementIndex = function() {
-		this.currentWordIndex += 1;
-	}
-
-	this.incrementIndex();
-	console.log(this.currentWordIndex);
-
-	this.incrementWhirl= function() {
-		var nextWheel = new Whirl(wordList[this.currentWordIndex]);
-		console.log(nextWheel);
-		// return nextWheel;
-	}
-
-	// when the button is clicked, increment the word list, and create a new whirl from the word at that index
-
-	// this doesn't actually work right now
-
-}
-
-// var this.currentWordIndex = 0;
 
 var wheel = new Whirl(firstWordList);
 

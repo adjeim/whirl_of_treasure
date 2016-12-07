@@ -31,7 +31,9 @@ function Word(string, hint, maxGold) {
 	this.array = this.string.split("");
 	this.characters = this.string.length;
 	this.hint = hint;
-	this.maxGold = this.string.length;
+	// this.maxGold = this.string.length;
+	this.maxGold = 
+	// maxGold needs to be the length of the array of the unique characters
 }
 
 var kitten = new Word("kitten", "a young domestic animal");
@@ -41,13 +43,19 @@ var incomprehensibilities = new Word("incomprehensibilities", "things that are d
 var firstWordList = [kitten, generosity, incomprehensibilities];
 
 
-function Whirl(word) {
+function Whirl(wordlist) {
 
 	var gameScreen = $("#gamescreen");
 
+	this.currentWordIndex = 0;
+
+	// this.currentWord = wordlist[this.currentWordIndex];
+
 	this.showBlanks = function() {
-		for (var i = 0; i < word.characters; i ++) {
-			gameScreen.append("<div class='lettercard'>" + word.array[i] + "</div>");
+		this.currentWord = wordlist[this.currentWordIndex];
+		for (var i = 0; i < this.currentWord.characters; i ++) {
+			console.log(this.currentWord.array[i]);
+			gameScreen.append("<div class='lettercard'>" + this.currentWord.array[i] + "</div>");
 			$(".lettercard").css("background-color", "black");
 			$(".lettercard").css("display", "inline-block");
 			$(".lettercard").css("margin-left", "20px");
@@ -55,8 +63,10 @@ function Whirl(word) {
 			// later change these in css. this is only temporary.
 		}
 
-		$("#hint").html(word.hint);
+		$("#hint").html(this.currentWord.hint);
 		$("#hint").hide();
+
+		$("#max-gold").html("Max gold: " + this.currentWord.maxGold);
 
 	}
 	this.showBlanks();
@@ -81,8 +91,8 @@ function Whirl(word) {
 		var indexes = [];
 		// create a blank array to store the indexes where user guess can be found
 
-		for (var i = 0; i < word.array.length; i ++) {
-			if (word.array[i].indexOf(userGuess) === 0) {
+		for (var i = 0; i < this.currentWord.array.length; i ++) {
+			if (this.currentWord.array[i].indexOf(userGuess) === 0) {
 				indexes.push(i);
 
 			} 
@@ -122,7 +132,7 @@ function Whirl(word) {
 
 	this.goldCounter = 0;
 	$("#gold").html("My gold: " + this.goldCounter);
-	$("#max-gold").html("Max gold: " + word.maxGold);
+	// $("#max-gold").html("Max gold: " + this.currentWord.maxGold);
 
 	this.changeGold = function() {
 		if (this.correctAnswer === true) {
@@ -137,15 +147,39 @@ function Whirl(word) {
 		}
 	}
 
+	this.incrementIndex = function() {
+		// clear the board
+		// $()
+		// for (var i = 0; i < this.currentWord.characters; i ++) {
+			gameScreen.children("div").remove();
+
+			// later change these in css. this is only temporary.
+		// }
+		this.currentWordIndex += 1;
+		console.log(this.currentWordIndex);
+		this.showBlanks();
+	}
+
+	// this.incrementIndex();
+	// console.log(this.currentWordIndex);
+
+	// this.incrementWhirl = function() {
+	// 	this.showBlanks();
+
+	// 	// var nextWheel = new Whirl(wordList[this.currentWordIndex]);
+	// 	// console.log(nextWheel);
+	// 	// return nextWheel;
+	// }
+
 	// this.gameOver = function() {
 	// 	// if all of the cards are turned over (have a class of guessed), show a message of congrats
 	// 	// var gameEnd = false;
 
-	// 	for (var i = 0; i < word.array.length; i ++) {
-	// 		if ($(word.array[i]).hasClass("guessed")) {
+	// 	for (var i = 0; i < this.currentWord.array.length; i ++) {
+	// 		if ($(this.currentWord.array[i]).hasClass("guessed")) {
 	// 			console.log(i);
 	// 		}
-	// 		// var isGuessed = word.array[i];
+	// 		// var isGuessed = this.currentWord.array[i];
 	// 		// if ($(isGuessed).hasClass("guessed")) {
 	// 			// console.log(isGuessed);
 
@@ -164,37 +198,30 @@ function Whirl(word) {
 }
 
 function nextWhirl(wordList) {
-	// this.currentWordIndex = 0;
+	// this.this.currentWordIndex = 0;
 
 	this.incrementIndex = function() {
-		currentWordIndex += 1;
+		this.currentWordIndex += 1;
 	}
 
 	this.incrementIndex();
-	console.log(currentWordIndex);
+	console.log(this.currentWordIndex);
 
 	this.incrementWhirl= function() {
-		var nextWheel = new Whirl(wordList[currentWordIndex]);
-		return nextWheel;
+		var nextWheel = new Whirl(wordList[this.currentWordIndex]);
+		console.log(nextWheel);
+		// return nextWheel;
 	}
 
 	// when the button is clicked, increment the word list, and create a new whirl from the word at that index
 
-	// this.incrementWhirl = Object.create(Whirl)
-
-	// this.incrementWhirl = function() {
-	// 	Object.create(Whirl);
-	// 	console.log(Whirl);
-	// }
-
-	// this.incrementWhirl();
+	// this doesn't actually work right now
 
 }
 
-var currentWordIndex = 0;
+// var this.currentWordIndex = 0;
 
-var wheel = new Whirl(firstWordList[0]);
-// wheel.showBlanks();
+var wheel = new Whirl(firstWordList);
 
 
 // Event listeners: 
@@ -212,15 +239,5 @@ $("#submit-guess").click(function(){
 })
 
 $("#new-whirl").click(function(){
-	nextWhirl(firstWordList);
+	wheel.incrementIndex();
 })
-
-
-// may be cool later to rewrite using vanilla js:
-			// var node = document.createElement("div");
-			// var textnode = document.createTextNode(word.array[i]);
-			// node.appendChild(textnode);
-			// // console.log(node);
-			// document.getElementById("gamescreen").appendChild(node);
-			// // why doesn't this line work?
-

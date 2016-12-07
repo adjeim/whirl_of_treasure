@@ -38,7 +38,7 @@ var kitten = new Word("kitten", "a young domestic animal");
 var generosity = new Word("generosity", "a quality found in those who share what they have");
 var incomprehensibilities = new Word("incomprehensibilities", "things that are difficult or impossible to understand");
 
-var wordList = [kitten, generosity, incomprehensibilities];
+var firstWordList = [kitten, generosity, incomprehensibilities];
 
 
 function Whirl(word) {
@@ -164,10 +164,36 @@ function Whirl(word) {
 }
 
 function nextWhirl(wordList) {
+	// this.currentWordIndex = 0;
+
+	this.incrementIndex = function() {
+		currentWordIndex += 1;
+	}
+
+	this.incrementIndex();
+	console.log(currentWordIndex);
+
+	this.incrementWhirl= function() {
+		var nextWheel = new Whirl(wordList[currentWordIndex]);
+		return nextWheel;
+	}
+
+	// when the button is clicked, increment the word list, and create a new whirl from the word at that index
+
+	// this.incrementWhirl = Object.create(Whirl)
+
+	// this.incrementWhirl = function() {
+	// 	Object.create(Whirl);
+	// 	console.log(Whirl);
+	// }
+
+	// this.incrementWhirl();
 
 }
 
-var wheel = new Whirl(wordList[0]);
+var currentWordIndex = 0;
+
+var wheel = new Whirl(firstWordList[0]);
 // wheel.showBlanks();
 
 
@@ -186,7 +212,7 @@ $("#submit-guess").click(function(){
 })
 
 $("#new-whirl").click(function(){
-	nextWhirl();
+	nextWhirl(firstWordList);
 })
 
 

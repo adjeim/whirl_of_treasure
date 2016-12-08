@@ -1,0 +1,36 @@
+.hint {
+  background-color: aliceblue;
+  font-size: 30px;
+  display: inline-block;
+  padding: 5px; }
+  .hint:hover {
+    background-color: purple; }
+
+.guess-container {
+  display: block; }
+
+.submit {
+  background-color: pink;
+  font-size: 30px;
+  display: inline-block;
+  padding: 5px; }
+  .submit:hover {
+    background-color: purple; }
+
+.gamescreen {
+  display: flex; }
+
+.lettercard {
+  display: inline-flex;
+  margin-left: 20px;
+  font-size: 40px;
+  width: 50px;
+  border: 5px solid purple; }
+  .lettercard .letter-hidden {
+    visibility: hidden;
+    margin: 0 auto; }
+  .lettercard .letter-visible {
+    visibility: visible;
+    margin: 0 auto; }
+
+/*# sourceMappingURL=main.css.map */

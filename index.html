@@ -2,7 +2,7 @@
 <html>
 <head>
 	<title>Whirl of Treasure</title>
-	<!-- <link rel="stylesheet" type="text/css" href="css/main.css"> -->
+	<link rel="stylesheet" type="text/css" href="css/main.css">
 	<!-- <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script> -->
 	<!-- <script type="text/javascript" src="scripts/script.js"></script> -->
 </head>
@@ -22,14 +22,17 @@
 
 	<div id="gamescreen"></div>
 
-	<button id="show-hint" type="button">Show Hint</button>
-	<button id="hide-hint" type="button">Hide Hint</button>
+	<div class="hint" id="show-hint" type="button">Show Hint</div>
+	<div class="hint" id="hide-hint" type="button">Hide Hint</div>
 	<div id="hint"></div>
+	<div id="guess-container">
+		<label for="userGuess">Enter your guess!
+			<input type="text" maxlength="1" id="submit-input">
+		</label>
+		<div id="submit-guess" class="submit">Submit</div>
 
-	<label for="userGuess">Enter your guess!
-		<input type="text" maxlength="1" id="submit-input">
-	</label>
-	<button id="submit-guess" type="button">Submit</button>
+	</div>
+
 
 	<div id="already-guessed"></div>
 
@@ -41,7 +44,7 @@
 
 
 	<div>
-		<button id="new-whirl" type="button">New Whirl</button>
+		<div id="new-whirl" class="submit">New Whirl</div>
 
 	</div>
 

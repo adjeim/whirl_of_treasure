@@ -57,21 +57,21 @@ function Whirl(wordlist) {
 			console.log(this.currentWord.array[i]);
 
 			if (this.currentWord.array[i] !== " ") {
-				gameScreen.append("<div class='lettercard'>" + this.currentWord.array[i] + "</div>");
-				$(".lettercard").css("background-color", "black");
-				$(".lettercard").css("display", "inline-block");
-				$(".lettercard").css("margin-left", "20px");
-				$(".lettercard").css("font-size", "40px");
+				gameScreen.append("<div class='lettercard'><span class='letter-hidden'>" + this.currentWord.array[i] + "</span></div>");
+				// $(".lettercard").css("background-color", "black");
+				// $(".lettercard").css("display", "inline-block");
+				// $(".lettercard").css("margin-left", "20px");
+				// $(".lettercard").css("font-size", "40px");
 			} else {
 				// this.whitespace += 1;
 				// console.log(this.whitespace);
-				gameScreen.append("<div class='lettercard whitespace'>&nbsp;</div>");
+				gameScreen.append("<div class='lettercard whitespace'><span>&nbsp;</span></div>");
 				$(".whitespace").css("background-color", "white");
 				// in the css, bg color needs to change for this
-				$(".lettercard").css("display", "inline-block");
-				$(".lettercard").css("margin-left", "20px");
-				$(".lettercard").css("margin-left", "20px");
-				$(".lettercard").css("font-size", "40px");
+				// $(".lettercard").css("display", "inline-block");
+				// $(".lettercard").css("margin-left", "20px");
+				// $(".lettercard").css("margin-left", "20px");
+				// $(".lettercard").css("font-size", "40px");
 
 			}
 			// later change these in css. this is only temporary.
@@ -153,10 +153,14 @@ function Whirl(wordlist) {
 			// Otherwise, loop through the array of indexes and change the background color of the indexes matching the user's guess.
 			console.log("your answer is correct");
 			for (var i = 0; i < indexes.length; i ++) {
-				var changeMe = $(".lettercard")[(indexes[i])];
-				// console.log(changeMe);
-				$(changeMe).css("background-color", "white");
-				$(changeMe).addClass("guessed");
+				var changeLetter = $(".letter")[(indexes[i])];
+				var changeLettercard = $(".lettercard")[(indexes[i])];
+				console.log(changeLetter);
+				// $(changeLetter).css("visbility", "visible");
+	
+				$(changeLetter).removeClass("letter-hidden");
+				$(changeLetter).addClass("letter-visible");
+				$(changeLettercard).addClass("guessed");
 			}
 			this.correctAnswer = true;
 			this.changeGold();
@@ -251,3 +255,6 @@ $("#submit-guess").click(function(){
 $("#new-whirl").click(function(){
 	wheel.incrementIndex();
 })
+
+
+// Click 

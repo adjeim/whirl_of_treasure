@@ -136,7 +136,9 @@ function Whirl(wordlist) {
 		var correctAnswer;
 		// Create a new variable for the correct answer.
 
-		if (userGuess === " ") {
+		var check = /^[a-zA-Z]*$/;
+
+		if (userGuess !== check) {
 			console.log("Please enter a letter from a to z.");
 
 		} else if (alreadyGuessed === true) {
@@ -192,12 +194,16 @@ function Whirl(wordlist) {
 	}
 
 	this.incrementIndex = function() {
+		guessedList = "";
+		// Reset the list of guessed letters.
+
 		gameScreen.children("div").remove();
 		// Clear the game screen of the last word.
 
-		// alreadyGuessed.html("");
-		// $("#already-guessed").html("")
-		// Reset the list of guessed letters.
+		var resultMessage = $("#result");
+		resultMessage.html("");
+		// Reset the result message.
+
 
 		this.currentWordIndex += 1;
 		// console.log(this.currentWordIndex);

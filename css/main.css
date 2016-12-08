@@ -20,17 +20,20 @@
 .gamescreen {
   display: flex; }
 
-.lettercard {
+.card {
   display: inline-flex;
   margin-left: 20px;
   font-size: 40px;
   width: 50px;
   border: 5px solid purple; }
-  .lettercard .letter-hidden {
-    visibility: hidden;
-    margin: 0 auto; }
-  .lettercard .letter-visible {
-    visibility: visible;
-    margin: 0 auto; }
+
+.lettercard {
+  margin: 0 auto; }
+
+.letter-hidden {
+  visibility: hidden; }
+
+.letter-visible {
+  visibility: visible; }
 
 /*# sourceMappingURL=main.css.map */

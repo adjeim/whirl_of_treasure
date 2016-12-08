@@ -57,7 +57,7 @@ function Whirl(wordlist) {
 			console.log(this.currentWord.array[i]);
 
 			if (this.currentWord.array[i] !== " ") {
-				gameScreen.append("<div class='lettercard'><span class='letter-hidden'>" + this.currentWord.array[i] + "</span></div>");
+				gameScreen.append("<div class='card'><span class='lettercard letter-hidden'>" + this.currentWord.array[i] + "</span></div>");
 				// $(".lettercard").css("background-color", "black");
 				// $(".lettercard").css("display", "inline-block");
 				// $(".lettercard").css("margin-left", "20px");
@@ -65,7 +65,7 @@ function Whirl(wordlist) {
 			} else {
 				// this.whitespace += 1;
 				// console.log(this.whitespace);
-				gameScreen.append("<div class='lettercard whitespace'><span>&nbsp;</span></div>");
+				gameScreen.append("<div class='card'><span class='lettercard whitespace'>&nbsp;</span></div>");
 				$(".whitespace").css("background-color", "white");
 				// in the css, bg color needs to change for this
 				// $(".lettercard").css("display", "inline-block");
@@ -153,8 +153,8 @@ function Whirl(wordlist) {
 			// Otherwise, loop through the array of indexes and change the background color of the indexes matching the user's guess.
 			console.log("your answer is correct");
 			for (var i = 0; i < indexes.length; i ++) {
-				var changeLetter = $(".letter")[(indexes[i])];
-				var changeLettercard = $(".lettercard")[(indexes[i])];
+				var changeLetter = $(".lettercard")[(indexes[i])];
+				var changeLettercard = $(".card")[(indexes[i])];
 				console.log(changeLetter);
 				// $(changeLetter).css("visbility", "visible");
 	
@@ -195,6 +195,10 @@ function Whirl(wordlist) {
 		gameScreen.children("div").remove();
 		// Clear the game screen of the last word.
 
+		// alreadyGuessed.html("");
+		// $("#already-guessed").html("")
+		// Reset the list of guessed letters.
+
 		this.currentWordIndex += 1;
 		// console.log(this.currentWordIndex);
 		this.showBlanks();
@@ -210,9 +214,9 @@ function Whirl(wordlist) {
 
 		this.checkPuzzle = function() {
 			for (var i = 0; i < this.currentWord.array.length; i ++) {
-				if ($(".lettercard").eq(i).hasClass("guessed") === false && $(".lettercard").eq(i).hasClass("whitespace") === false) {
-					console.log($(".lettercard").eq(i).hasClass("guessed"));
-					console.log($(".lettercard").eq(i).hasClass("whitespace"));
+				if ($(".card").eq(i).hasClass("guessed") === false && $(".card").eq(i).hasClass("whitespace") === false) {
+					console.log($(".card").eq(i).hasClass("guessed"));
+					console.log($(".card").eq(i).hasClass("whitespace"));
 					return false;
 				}
 			

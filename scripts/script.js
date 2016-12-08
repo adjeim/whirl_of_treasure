@@ -58,20 +58,12 @@ function Whirl(wordlist) {
 
 			if (this.currentWord.array[i] !== " ") {
 				gameScreen.append("<div class='card'><span class='lettercard letter-hidden'>" + this.currentWord.array[i] + "</span></div>");
-				// $(".lettercard").css("background-color", "black");
-				// $(".lettercard").css("display", "inline-block");
-				// $(".lettercard").css("margin-left", "20px");
-				// $(".lettercard").css("font-size", "40px");
+
 			} else {
 				// this.whitespace += 1;
 				// console.log(this.whitespace);
 				gameScreen.append("<div class='card'><span class='lettercard whitespace'>&nbsp;</span></div>");
 				$(".whitespace").css("background-color", "white");
-				// in the css, bg color needs to change for this
-				// $(".lettercard").css("display", "inline-block");
-				// $(".lettercard").css("margin-left", "20px");
-				// $(".lettercard").css("margin-left", "20px");
-				// $(".lettercard").css("font-size", "40px");
 
 			}
 			// later change these in css. this is only temporary.
@@ -107,8 +99,8 @@ function Whirl(wordlist) {
 		// console.log(userGuess);
 
 		var alreadyGuessed;
-		// var guessed = "";
-		// $("#already-guessed").append(userGuess)
+		// Create new variable which will be assigned true if the user has already guessed a specific letter.
+
 
 		if (guessedList.indexOf(userGuess) === -1) {
 			// If the new guess is not already written to already-guessed list, add it.
@@ -138,7 +130,7 @@ function Whirl(wordlist) {
 
 		var check = /^[a-zA-Z]*$/;
 
-		if (userGuess !== check) {
+		if (check.test(userGuess) == false) {
 			console.log("Please enter a letter from a to z.");
 
 		} else if (alreadyGuessed === true) {

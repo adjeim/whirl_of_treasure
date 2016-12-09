@@ -45,13 +45,10 @@ function Whirl(wordlist) {
 				gameScreen.append("<div class='card'><span class='lettercard letter-hidden'>" + this.currentWord.array[i] + "</span></div>");
 
 			} else {
-				// this.whitespace += 1;
-				// console.log(this.whitespace);
 				gameScreen.append("<div class='card'><span class='lettercard whitespace'>&nbsp;</span></div>");
 				$(".whitespace").css("background-color", "white");
 
 			}
-			// later change these in css. this is only temporary.
 
 			$("#max-gold").html("Max gold: " + this.currentWord.maxGold);
 			$("#min-gold").html("Min gold: " + this.currentWord.minGold);
@@ -67,13 +64,11 @@ function Whirl(wordlist) {
 
 	this.showHint = function() {
 		$("#hint").show();
-		// $("#show-hint").html("Hide Hint");
 
 	}
 
 	this.hideHint = function() {
 		$("#hint").hide();
-		// $("#show-hint").html("Hide Hint");
 
 	}
 
@@ -81,7 +76,6 @@ function Whirl(wordlist) {
 
 	this.guessLetter = function() {
 		var userGuess = $("input").val().toLowerCase();
-		// console.log(userGuess);
 
 		var alreadyGuessed;
 		// Create new variable which will be assigned true if the user has already guessed a specific letter.
@@ -92,7 +86,6 @@ function Whirl(wordlist) {
 			guessedList += userGuess;
 			$("#already-guessed").html(guessedList);
 		} else {
-			// $("#already-guessed").append(userGuess);
 			alreadyGuessed = true;
 			// console.log("You've guessed that already.");
 		}
@@ -257,5 +250,7 @@ $("#new-whirl").click(function(){
 // Gold coin images appear and disappear when the amount of gold changes.
 // Allow user to guess the entire word before guessing all of the letters.
 // Let the user submit guesses by clicking enter.
+// Display on the page (not just in the console) useful information for the user, such as when they need to use a-z characters.
+// If a word is of a certain length, make sure it changes in css to stay on one line.
 
 

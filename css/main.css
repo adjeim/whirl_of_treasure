@@ -5,9 +5,13 @@
   background-color: pink;
   font-size: 20px;
   display: inline-block;
-  padding: 5px; }
+  padding: 5px;
+  border: 2px outset gold; }
   .submit:hover {
     background-color: purple; }
+
+#new-whirl {
+  font-size: 30px; }
 
 .gamescreen {
   display: flex;
@@ -16,9 +20,10 @@
 .card {
   display: inline-flex;
   margin-left: 10px;
+  margin-bottom: 15px;
   font-size: 40px;
   width: 50px;
-  border: 5px solid purple; }
+  border: 5px outset purple; }
   .card .lettercard {
     margin: 0 auto; }
   .card .letter-hidden {
@@ -32,20 +37,30 @@
     width: 50px;
     display: none; }
 
+.gold-container {
+  border: 2px solid gold;
+  background-color: #f2e5ae;
+  display: inline-block;
+  font-size: 20px;
+  padding: 5px; }
+
 body {
   font-family: Verdana; }
 
 #how-to {
   display: inline-block;
   background-color: aliceblue;
-  padding: 20px; }
+  padding: 20px;
+  border: 3px solid lightblue; }
 
 .hint {
   background-color: aliceblue;
-  font-size: 24px;
+  font-size: 20px;
   display: inline-block;
-  padding: 5px; }
+  padding: 5px;
+  border: 2px outset lightblue; }
   .hint:hover {
-    background-color: purple; }
+    background-color: purple;
+    border: 2px inset lavender; }
 
 /*# sourceMappingURL=main.css.map */

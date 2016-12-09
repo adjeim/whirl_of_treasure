@@ -2,53 +2,68 @@
 <html>
 <head>
 	<title>Whirl of Treasure</title>
-	<link rel="stylesheet" type="text/css" href="css/main.css">
-	<!-- <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script> -->
-	<!-- <script type="text/javascript" src="scripts/script.js"></script> -->
-</head>
-<body>
-	<h1>Whirl of Treasure</h1>
-	<h2>Your chance to compete for fabulous prizes!</h2>
-	<h3>How to play:</h3>
-
-	<ul>
-		<li>A mystery word is hidden behind the panels below.</li>
-		<li>Guess a letter by entering it into the input bar and clicking Submit.</li>
-		<li>For a hint, click Show Hint.</li>
-		<li>You will earn 1 gold for each correct guess and lose 1 gold for each incorrect guess.</li>
-		<li>Will you come into fabulous riches or go into fabulous debt? Only you can decide.</li>
-		<li>Have fun!</li>
-	</ul>
-
-	<div id="gamescreen"></div>
-
-	<div class="hint" id="show-hint" type="button">Show Hint</div>
-	<div class="hint" id="hide-hint" type="button">Hide Hint</div>
-	<div id="hint"></div>
-	<div id="guess-container">
-		<label for="userGuess">Enter your guess!
-			<input type="text" maxlength="1" id="submit-input">
-		</label>
-		<div id="submit-guess" class="submit">Submit</div>
-
-	</div>
 
 
-	<div id="already-guessed"></div>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 
-	<div id="gold"></div>
-	<div id="max-gold"></div>
-	<div id="min-gold"></div>
-
-	<p id="result"></p>
-
-
-	<div>
-		<div id="new-whirl" class="submit">New Whirl</div>
-
-	</div>
+	<!-- Optional theme -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
 
 	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+
+	<!-- Latest compiled and minified JavaScript -->
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+	<link rel="stylesheet" type="text/css" href="css/main.css">
+
 	<script type="text/javascript" src="scripts/script.js"></script>
+</head>
+<body>
+	<div class="container">
+		<header>
+			<h1>Whirl of Treasure</h1>
+			<h2>Your chance to compete for fabulous prizes!</h2>
+		</header>
+		<div>
+			<div>
+				<h3 id="how-to">How to play!</h3>
+			</div>
+			<ul id="instructions">
+				<li>A mystery word is hidden behind the panels below.</li>
+				<li>Guess a letter by entering it into the input bar and clicking Submit.</li>
+				<li>For a hint, click Show Hint.</li>
+				<li>You will earn 1 gold for each correct guess and lose 1 gold for each incorrect guess.</li>
+				<li>Will you come into fabulous riches or go into fabulous debt? Only you can decide.</li>
+				<li>Have fun!</li>
+			</ul>
+		</div>
+
+		<div id="gamescreen"></div>
+			<div class="hint" id="show-hint" type="button">Show Hint</div>
+			<div class="hint" id="hide-hint" type="button">Hide Hint</div>
+			<div id="hint"></div>
+			<div id="guess-container">
+			<label for="userGuess">Enter your guess!
+				<input type="text" maxlength="1" id="submit-input">
+			</label>
+			<div id="submit-guess" class="submit">Submit</div>
+			<div id="already-guessed"></div>
+		</div>
+
+		<div class="gold-container">
+			<div id="gold"></div>
+			<div id="max-gold"></div>
+			<div id="min-gold"></div>
+			<p id="result"></p>
+		</div>
+
+
+		<div>
+			<div id="new-whirl" class="submit">New Whirl</div>
+		</div>
+	</div>
+
+
+	<!-- <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script> -->
+	<!-- <script type="text/javascript" src="scripts/script.js"></script> -->
 </body>
 </html>

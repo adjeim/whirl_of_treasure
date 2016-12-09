@@ -1,67 +1,28 @@
+@import 'gamescreen';
+
+body {
+	font-family: Verdana;
+
+}
+
+
+#how-to {
+	display: inline-block;
+	background-color: aliceblue;
+	padding: 20px;
+}
 
 
 .hint {
 	background-color: aliceblue;
-	font-size: 30px;
+	font-size: 24px;
 	display: inline-block;
 	padding: 5px;
-	// border: 1px solid blue;
+	
 	&:hover {
 		background-color: purple;
 	}
 
 }
 
-.guess-container {
-	display: block;
-}
 
-
-.submit {
-	background-color: pink;
-	font-size: 30px;
-	display: inline-block;
-	padding: 5px;
-	// border: 1px solid blue;
-	&:hover {
-		background-color: purple;
-	}
-}
-
-.gamescreen {
-	display: flex;
-}
-
-.card {
-	display: inline-flex;
-	margin-left: 20px;
-	font-size: 40px;
-	width: 50px;
-	border: 5px solid purple;
-
-}
-
-.lettercard {
-	// background-color: purple;
-	// display: inline-flex;
-	// margin-left: 20px;
-	// font-size: 40px;
-	// width: 50px;
-	// border: 5px solid purple;
-
-	// text-align: center;
-	margin: 0 auto;
-
-
-}
-
-
-.letter-hidden {
-	visibility: hidden;
-	// margin: 0 auto;
-}
-
-.letter-visible {
-	visibility: visible;
-	// margin: 0 auto;
-}

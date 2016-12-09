@@ -1,0 +1,50 @@
+.guess-container {
+	display: block;
+}
+
+
+.submit {
+	background-color: pink;
+	font-size: 20px;
+	display: inline-block;
+	padding: 5px;
+	// border: 1px solid blue;
+	&:hover {
+		background-color: purple;
+	}
+}
+
+.gamescreen {
+	display: flex;
+	margin-bottom: 20px;
+}
+
+.card {
+	display: inline-flex;
+	margin-left: 10px;
+	font-size: 40px;
+	width: 50px;
+	border: 5px solid purple;
+
+	.lettercard {
+		margin: 0 auto;
+	}
+
+	.letter-hidden {
+		visibility: hidden;
+	}
+
+	.letter-visible {
+		visibility: visible;
+	}
+
+	.whitespace {
+	 	display: inline-flex;
+		margin-left: 20px;
+		font-size: 40px;
+		width: 50px;
+		display: none;
+		
+	}
+
+}

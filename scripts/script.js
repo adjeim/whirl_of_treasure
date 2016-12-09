@@ -1,24 +1,8 @@
 // A single page app allowing the user to play a simple game of Wheel of Fortune. Use JavaScript to give the user a word to guess letter by letter. Will the user lose points as they guess wrong? Will they try to beat the clock? Do they only get 3 guesses? You decide! Make it clear to the user what their goal is. The app should be styled with simple but modern design trends and fun for the user. Remember keep your user engaged.
 
+$(document).ready(function(){
 
-// Game works in Wheel of Fortune style
-// Design and UI/UX carefully though and through
-// JS throws no errors
-// User can play several rounds of new words
-// Hints are given to direct the user what the word is related to
-// HTML/CSS is properly formatted
 
-// make easy word, medium word, hard word
-
-// spin the wheel to get a multiplier, do you want to take the risk for more fabulous prizes? or you could go into fabulous debt. 
-
-// bonus: if you guess the word correctly, win a chance to spin for bonus gold. exchange your gold for sweet prizes
-
-// toggle showHint
-
-// if user can guess the whole word beforehand, give them...?
-
-// when something is clicked, show a hint that shows by sliding down
 
 function Word(string, hint, whitespace) {
 	this.string = string;
@@ -27,7 +11,7 @@ function Word(string, hint, whitespace) {
 	this.hint = hint;
 	this.whitespace = whitespace;
 	this.maxGold = this.array.filter((value, index, arr) => arr.indexOf(value) === index).length - this.whitespace;
-	this.minGold = -this.maxGold;
+	this.minGold = -26 + this.maxGold;
 	// Filter through the array and return the number of unique characters in the word.
 
 }
@@ -212,7 +196,7 @@ function Whirl(wordlist) {
 
 		this.checkPuzzle = function() {
 			for (var i = 0; i < this.currentWord.array.length; i ++) {
-				if ($(".card").eq(i).hasClass("guessed") === false && $(".card").eq(i).hasClass("whitespace") === false) {
+				if ($(".card").eq(i).hasClass("guessed") === false && $(".lettercard").eq(i).hasClass("whitespace") === false) {
 					console.log($(".card").eq(i).hasClass("guessed"));
 					console.log($(".card").eq(i).hasClass("whitespace"));
 					return false;
@@ -259,4 +243,16 @@ $("#new-whirl").click(function(){
 })
 
 
-// Click 
+
+// $("#how-to").click(function(){
+// 	$("#instructions").toggle();
+// })
+
+});
+// Possible features to add:
+
+// Instructions are hidden and slide down on click.
+// Gold coin images appear and disappear when the amount of gold changes.
+// Allow user to guess the entire word before guessing all of the letters.
+
+

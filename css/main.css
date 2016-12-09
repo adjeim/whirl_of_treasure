@@ -1,39 +1,51 @@
-.hint {
-  background-color: aliceblue;
-  font-size: 30px;
-  display: inline-block;
-  padding: 5px; }
-  .hint:hover {
-    background-color: purple; }
-
 .guess-container {
   display: block; }
 
 .submit {
   background-color: pink;
-  font-size: 30px;
+  font-size: 20px;
   display: inline-block;
   padding: 5px; }
   .submit:hover {
     background-color: purple; }
 
 .gamescreen {
-  display: flex; }
+  display: flex;
+  margin-bottom: 20px; }
 
 .card {
   display: inline-flex;
-  margin-left: 20px;
+  margin-left: 10px;
   font-size: 40px;
   width: 50px;
   border: 5px solid purple; }
+  .card .lettercard {
+    margin: 0 auto; }
+  .card .letter-hidden {
+    visibility: hidden; }
+  .card .letter-visible {
+    visibility: visible; }
+  .card .whitespace {
+    display: inline-flex;
+    margin-left: 20px;
+    font-size: 40px;
+    width: 50px;
+    display: none; }
 
-.lettercard {
-  margin: 0 auto; }
+body {
+  font-family: Verdana; }
 
-.letter-hidden {
-  visibility: hidden; }
+#how-to {
+  display: inline-block;
+  background-color: aliceblue;
+  padding: 20px; }
 
-.letter-visible {
-  visibility: visible; }
+.hint {
+  background-color: aliceblue;
+  font-size: 24px;
+  display: inline-block;
+  padding: 5px; }
+  .hint:hover {
+    background-color: purple; }
 
 /*# sourceMappingURL=main.css.map */

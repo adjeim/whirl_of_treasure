@@ -1,7 +1,5 @@
-// A single page app allowing the user to play a simple game of Wheel of Fortune. Use JavaScript to give the user a word to guess letter by letter. Will the user lose points as they guess wrong? Will they try to beat the clock? Do they only get 3 guesses? You decide! Make it clear to the user what their goal is. The app should be styled with simple but modern design trends and fun for the user. Remember keep your user engaged.
 
 $(document).ready(function(){
-
 
 
 function Word(string, hint, whitespace) {
@@ -10,9 +8,12 @@ function Word(string, hint, whitespace) {
 	this.characters = this.string.length;
 	this.hint = hint;
 	this.whitespace = whitespace;
-	this.maxGold = this.array.filter((value, index, arr) => arr.indexOf(value) === index).length - this.whitespace;
-	this.minGold = -26 + this.maxGold;
+
 	// Filter through the array and return the number of unique characters in the word.
+	this.maxGold = this.array.filter((value, index, arr) => arr.indexOf(value) === index).length - this.whitespace;
+
+	this.minGold = -26 + this.maxGold;
+
 
 }
 
@@ -79,7 +80,7 @@ function Whirl(wordlist) {
 	var guessedList = "";
 
 	this.guessLetter = function() {
-		var userGuess = $("input").val();
+		var userGuess = $("input").val().toLowerCase();
 		// console.log(userGuess);
 
 		var alreadyGuessed;
@@ -249,10 +250,12 @@ $("#new-whirl").click(function(){
 // })
 
 });
-// Possible features to add:
+
+// Features to add:
 
 // Instructions are hidden and slide down on click.
 // Gold coin images appear and disappear when the amount of gold changes.
 // Allow user to guess the entire word before guessing all of the letters.
+// Let the user submit guesses by clicking enter.
 
 

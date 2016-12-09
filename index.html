@@ -19,7 +19,7 @@
 </head>
 <body>
 	<div class="container">
-		<header>
+		<header class="text-center">
 			<h1>Whirl of Treasure</h1>
 			<h2>Your chance to compete for fabulous prizes!</h2>
 		</header>
@@ -36,17 +36,18 @@
 				<li>Have fun!</li>
 			</ul>
 		</div>
-
-		<div id="gamescreen"></div>
+		<div class="gamescreen-container text-center">
+			<div id="gamescreen" class="text-center"></div>
 			<div class="hint" id="show-hint" type="button">Show Hint</div>
 			<div class="hint" id="hide-hint" type="button">Hide Hint</div>
 			<div id="hint"></div>
 			<div id="guess-container">
-			<label for="userGuess">Enter your guess!
-				<input type="text" maxlength="1" id="submit-input" autofocus>
-			</label>
-			<div id="submit-guess" class="submit">Submit</div>
-			<div id="already-guessed"></div>
+				<label for="userGuess">Enter your guess!
+					<input type="text" maxlength="1" id="submit-input" autofocus>
+				</label>
+				<div id="submit-guess" class="submit">Submit</div>
+				<div id="already-guessed"></div>
+			</div>
 		</div>
 
 		<div class="gold-container">
